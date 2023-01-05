@@ -26,7 +26,7 @@ import java.util.Scanner;
 
 public class Test {
     public static void main(String[] args){
-        System.out.println("Enter your identity.");
+        System.out.println("Enter your identity!!");
         System.out.println("administrator(0) or user(1)");
         Scanner scan=new Scanner(System.in);
         int choice=scan.nextInt();
