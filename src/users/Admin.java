@@ -15,23 +15,13 @@ public class Admin extends User{
         System.out.println("0.quit");
     }
     public  void Operation(int n,BookList bookList)throws OperationException{
-        IOperation iOperation=null;
-        switch(n){
-            case 0:
-                iOperation= new ExitOperation();
-                break;
-            case 1:
-                iOperation=new FindOperation();
-                break;
-            case 2:
-                iOperation=new AddOperation();
-                break;
-            case 3:
-                iOperation= new DisplayOperation();
-                break;
-            default:
-                throw new OperationException("Input errors, please re-enter");
-        }
+        IOperation iOperation = switch (n) {
+            case 0 -> new ExitOperation();
+            case 1 -> new FindOperation();
+            case 2 -> new AddOperation();
+            case 3 -> new DisplayOperation();
+            default -> throw new OperationException("Input errors, please re-enter");
+        };
         try {
             iOperation.work(bookList);
         }catch(OperationException e){
