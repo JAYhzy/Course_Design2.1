@@ -13,7 +13,6 @@ import java.util.Scanner;
 public class FindOperation implements IOperation{
     @Override
     public void work(BookList bookList) throws Exception {
-        ArrayList<Book> books = new ArrayList<>();
         jdbc_util jdbcUtil = new jdbc_util();
         Connection connection =  jdbcUtil.getCon();
         BookDao bookDao = new BookDao();
@@ -43,9 +42,9 @@ public class FindOperation implements IOperation{
                 System.out.println("Enter Category:");
             }
         }
-        books = bookDao.findBook(connection, po-1, scan.next());
-        if (books != null && books.size()!=0)
-            for (Book e: books)
+        bookList.books = bookDao.findBook(connection, po-1, scan.next());
+        if (bookList.books != null && bookList.books.size()!=0)
+            for (Book e: bookList.books)
                 System.out.println(e);
         else
             System.out.println("Not Found!");
