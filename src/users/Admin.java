@@ -11,8 +11,7 @@ public class Admin extends User{
         System.out.println("dear:"+this.getName()+ "welcome to library");
         System.out.println("1.search");
         System.out.println("2.add");
-        System.out.println("3.delete");
-        System.out.println("4.print");
+        System.out.println("3.print");
         System.out.println("0.quit");
     }
     public  void Operation(int n,BookList bookList)throws OperationException{
@@ -28,9 +27,6 @@ public class Admin extends User{
                 iOperation=new AddOperation();
                 break;
             case 3:
-                //iOperation=new DelOperation();
-                break;
-            case 4:
                 iOperation= new DisplayOperation();
                 break;
             default:
