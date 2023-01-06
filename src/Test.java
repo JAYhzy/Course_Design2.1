@@ -14,18 +14,24 @@
 //        4. Get all books by a publisher
 //        5. Get all books by a name
 
+import Book.BookDao;
 import Book.BookList;
 import Operation.IOperation;
 import Operation.OperationException;
 import users.Admin;
 import users.Reader;
 import users.User;
+import util.jdbc_util;
 
+import java.sql.Connection;
 import java.util.Scanner;
 
-
 public class Test {
-    public static void main(String[] args){
+    public static void main(String[] args) throws Exception {
+        jdbc_util jdbcUtil = new jdbc_util();
+        Connection connection =  jdbcUtil.getCon();
+        BookDao bookDao = new BookDao();
+        bookDao.createTable(connection);
         System.out.println("Enter your identity:");
         System.out.println("administrator(0) or user(1)");
         Scanner scan=new Scanner(System.in);
@@ -45,10 +51,6 @@ public class Test {
             user.menu();
             System.out.println("Enter your operation:");
             int input=scan.nextInt();
-            if(input==0){
-                System.out.println("exist");
-                return;
-            }
             try {
                 user.Operation(input, bookList);
             }catch(OperationException e){
